@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ayari | Football & Life Coaching</title>
+  <meta name="description" content="Football coaching, strength training and life balance with Omar Ayari.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+:root {
+  --black: #000;
+  --ink: #161616;
+  --yellow: #FFD400;
+  --white: #fff;
+  --muted: #b8b8b8;
+  --pad: clamp(1.25rem, 5vw, 5rem);
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: "Cairo", system-ui, sans-serif;
+  line-height: 1.6;
+}
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--yellow); outline-offset: 3px; }
+
+h1, h2, h3, .logo, .wordmark { font-family: "Anton", "Cairo", sans-serif; font-weight: 400; line-height: 1.05; }
+html[lang="ar"] h1, html[lang="ar"] h2, html[lang="ar"] h3 { font-family: "Cairo", sans-serif; font-weight: 800; line-height: 1.25; }
+
+/* NAV */
+.nav {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.9rem var(--pad);
+  background: var(--black);
+  border-block-end: 2px solid var(--yellow);
+}
+.logo { font-size: 1.8rem; color: var(--yellow); letter-spacing: 0.04em; }
+.links { display: flex; gap: 1.75rem; font-weight: 600; }
+.links a:hover { color: var(--yellow); }
+.lang {
+  font: inherit; font-weight: 800; cursor: pointer;
+  background: var(--yellow); color: var(--black);
+  border: 0; padding: 0.4rem 1rem;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block; font: inherit; font-weight: 800; cursor: pointer;
+  padding: 0.85rem 1.6rem; border: 2px solid var(--yellow);
+}
+.btn-yellow { background: var(--yellow); color: var(--black); }
+.btn-yellow:hover { background: var(--white); border-color: var(--white); }
+.btn-line { background: transparent; color: var(--white); }
+.btn-line:hover { background: var(--yellow); color: var(--black); }
+
+/* HERO */
+.hero {
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 2rem;
+  min-height: calc(100vh - 66px);
+  padding: 4rem var(--pad) 8rem;
+}
+.hero-copy { position: relative; z-index: 2; }
+.hero h1 { font-size: clamp(3.2rem, 9vw, 7.5rem); text-transform: uppercase; }
+html[lang="ar"] .hero h1 { text-transform: none; }
+.lead { max-width: 34rem; margin-block: 1.5rem 2rem; font-size: 1.2rem; color: var(--muted); }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+
+.hero-photo {
+  position: relative; z-index: 2;
+  aspect-ratio: 4 / 5; width: 100%; max-width: 420px; justify-self: center;
+  background: var(--ink) url("images/omar.jpg") center / cover no-repeat;
+  box-shadow: 18px 18px 0 var(--yellow);
+}
+html[dir="rtl"] .hero-photo { box-shadow: -18px 18px 0 var(--yellow); }
+
+.wordmark {
+  position: absolute; inset-inline: 0; bottom: -0.12em; z-index: 1;
+  text-align: center; white-space: nowrap; pointer-events: none;
+  font-size: clamp(6rem, 26vw, 24rem);
+  color: transparent; -webkit-text-stroke: 2px rgba(255, 212, 0, 0.35);
+}
+
+/* SECTIONS */
+.section { padding: 5rem var(--pad); }
+.section h2 { font-size: clamp(2.2rem, 5vw, 4rem); margin-block-end: 2rem; text-transform: uppercase; }
+html[lang="ar"] .section h2 { text-transform: none; }
+
+.about { background: var(--yellow); color: var(--black); }
+.about p { max-width: 46rem; font-size: 1.3rem; font-weight: 600; }
+
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.services article { border-block-start: 6px solid var(--yellow); padding-block-start: 1.25rem; }
+.services h3 { font-size: 2rem; margin-block-end: 0.5rem; }
+.services p { color: var(--muted); }
+
+.programs { list-style: none; padding: 0; border-block-start: 1px solid var(--white); }
+.programs li {
+  display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+  padding-block: 1.75rem; border-block-end: 1px solid var(--white);
+}
+.programs h3 { font-size: 1.9rem; color: var(--yellow); }
+.programs p { color: var(--muted); }
+
+.contact { background: var(--ink); }
+.contact > p { max-width: 36rem; margin-block-end: 2rem; color: var(--muted); }
+form { display: grid; gap: 1.25rem; max-width: 36rem; }
+label span { display: block; font-weight: 600; margin-block-end: 0.35rem; }
+input, textarea {
+  width: 100%; font: inherit; color: var(--white);
+  background: var(--black); border: 2px solid var(--white); padding: 0.75rem 1rem;
+}
+input:focus, textarea:focus { border-color: var(--yellow); outline: none; }
+
+.footer {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+  padding: 1.5rem var(--pad); color: var(--muted); border-block-start: 2px solid var(--yellow);
+}
+.footer a:hover { color: var(--yellow); }
+
+/* GYM PROGRAM */
+#gym { scroll-margin-top: 66px; }
+.gym-tabs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-block-end: 2rem; }
+.gym-tab {
+  font: inherit; font-weight: 800; cursor: pointer; text-align: start; line-height: 1.3;
+  background: transparent; color: var(--white);
+  border: 2px solid var(--white); padding: 0.6rem 1.1rem;
+}
+.gym-tab small { display: block; font-weight: 600; color: var(--muted); }
+.gym-tab:hover { border-color: var(--yellow); }
+.gym-tab[aria-selected="true"] { background: var(--yellow); border-color: var(--yellow); color: var(--black); }
+.gym-tab[aria-selected="true"] small { color: var(--black); }
+
+.gym-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+.gym-card { background: var(--ink); border-block-start: 6px solid var(--yellow); }
+.gym-photo { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #222; }
+.gym-ph { aspect-ratio: 4 / 3; display: grid; place-items: center; font-size: 2.6rem; background: #222; }
+.gym-body { padding: 1rem 1.1rem 1.25rem; }
+.gym-name { font-size: 1.3rem; margin-block-end: 0.6rem; }
+.gym-sets { display: inline-block; background: var(--yellow); color: var(--black); font-weight: 800; padding: 0.1rem 0.7rem; }
+.gym-rest { grid-column: 1 / -1; border: 2px solid var(--yellow); padding: 2.5rem 1.5rem; text-align: center; }
+.gym-rest .big { font-size: 3rem; }
+.gym-rest h3 { color: var(--yellow); font-size: 1.8rem; margin-block: 0.5rem 1rem; }
+.gym-rest ul { list-style: none; padding: 0; display: grid; gap: 0.5rem; color: var(--muted); }
+
+/* MOBILE */
+@media (max-width: 800px) {
+  .links { display: none; }
+  .hero { grid-template-columns: 1fr; padding-block-end: 7rem; }
+  .hero-photo { max-width: 300px; justify-self: start; }
+  .services { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+</style>
+</head>
+<body>
+
+  <header class="nav">
+    <a class="logo" href="#top">AYARI</a>
+    <nav class="links">
+      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#programs" data-i18n="nav_programs">Programs</a>
+      <a href="#gym" data-i18n="nav_gym">Gym</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <button class="lang" id="langBtn" type="button" aria-label="Change language">العربية</button>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-copy">
+        <h1 data-i18n="hero_title">Strong body.<br>Balanced life.</h1>
+        <p class="lead" data-i18n="hero_sub">Football coaching, strength training and life balance with Omar Ayari.</p>
+        <div class="actions">
+          <a class="btn btn-yellow" href="#contact" data-i18n="hero_cta">Start with me</a>
+          <a class="btn btn-line" href="#programs" data-i18n="hero_cta2">See programs</a>
+        </div>
+      </div>
+      <!-- Put your photo in images/omar.jpg -->
+      <div class="hero-photo" role="img" aria-label="Omar Ayari"></div>
+      <div class="wordmark" aria-hidden="true">AYARI</div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <h2 data-i18n="about_title">From the pitch to everyday life</h2>
+      <p data-i18n="about_text">I'm Omar Ayari. I play football, I coach at a football academy, I train in the gym and I'm still a student. I learned that strength only lasts when your life is in balance, and that is what I coach.</p>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <h2 data-i18n="services_title">What I coach</h2>
+      <div class="services">
+        <article>
+          <h3 data-i18n="s1_title">Football</h3>
+          <p data-i18n="s1_text">Technique, positioning and match mindset for young players and amateurs.</p>
+        </article>
+        <article>
+          <h3 data-i18n="s2_title">Strength</h3>
+          <p data-i18n="s2_text">Gym programs built around your level and your goal.</p>
+        </article>
+        <article>
+          <h3 data-i18n="s3_title">Balance</h3>
+          <p data-i18n="s3_text">Plan your week so training, study, work and rest all get their place.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section class="section" id="programs">
+      <h2 data-i18n="programs_title">Programs</h2>
+      <ul class="programs">
+        <li>
+          <div>
+            <h3 data-i18n="p1_title">Player program</h3>
+            <p data-i18n="p1_text">Weekly football sessions focused on your weak points.</p>
+          </div>
+          <a class="btn btn-line" href="#contact" data-i18n="ask">Ask for details</a>
+        </li>
+        <li>
+          <div>
+            <h3 data-i18n="p2_title">Strength program</h3>
+            <p data-i18n="p2_text">A gym plan with clear weekly progress.</p>
+          </div>
+          <a class="btn btn-line" href="#contact" data-i18n="ask">Ask for details</a>
+        </li>
+        <li>
+          <div>
+            <h3 data-i18n="p3_title">Balance program</h3>
+            <p data-i18n="p3_text">Sport, study and rest organized in one routine.</p>
+          </div>
+          <a class="btn btn-line" href="#contact" data-i18n="ask">Ask for details</a>
+        </li>
+      </ul>
+    </section>
+
+    <!-- GYM PROGRAM -->
+    <section class="section" id="gym">
+      <h2 data-i18n="gym_title">Weekly gym program</h2>
+      <div class="gym-tabs" id="gymTabs" role="tablist"></div>
+      <div class="gym-grid" id="gymGrid"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <h2 data-i18n="contact_title">Let's talk</h2>
+      <p data-i18n="contact_text">Tell me your goal and I will reply on WhatsApp.</p>
+      <form id="contactForm">
+        <label>
+          <span data-i18n="f_name">Your name</span>
+          <input type="text" id="name" required>
+        </label>
+        <label>
+          <span data-i18n="f_msg">Your goal</span>
+          <textarea id="msg" rows="4" required></textarea>
+        </label>
+        <button class="btn btn-yellow" type="submit" data-i18n="f_send">Send on WhatsApp</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Omar Ayari</span>
+    <!-- Replace # with your real links -->
+    <span><a href="#">Instagram</a> · <a href="#">WhatsApp</a></span>
+  </footer>
+
+  <script>
+// Put your WhatsApp number here: country code + number, no + or spaces
+const WHATSAPP_NUMBER = "+21647125160";
+
+const dict = {
+  en: {
+    nav_about: "About", nav_services: "Services", nav_programs: "Programs", nav_contact: "Contact", nav_gym: "Gym", gym_title: "Weekly gym program",
+    hero_title: "Strong body.<br>Balanced life.",
+    hero_sub: "Football coaching, strength training and life balance with Omar Ayari.",
+    hero_cta: "Start with me", hero_cta2: "See programs",
+    about_title: "From the pitch to everyday life",
+    about_text: "I'm Omar Ayari. I play football, I coach at a football academy, I train in the gym and I'm still a student. I learned that strength only lasts when your life is in balance, and that is what I coach.",
+    services_title: "What I coach",
+    s1_title: "Football", s1_text: "Technique, positioning and match mindset for young players and amateurs.",
+    s2_title: "Strength", s2_text: "Gym programs built around your level and your goal.",
+    s3_title: "Balance", s3_text: "Plan your week so training, study, work and rest all get their place.",
+    programs_title: "Programs",
+    p1_title: "Player program", p1_text: "Weekly football sessions focused on your weak points.",
+    p2_title: "Strength program", p2_text: "A gym plan with clear weekly progress.",
+    p3_title: "Balance program", p3_text: "Sport, study and rest organized in one routine.",
+    ask: "Ask for details",
+    contact_title: "Let's talk", contact_text: "Tell me your goal and I will reply on WhatsApp.",
+    f_name: "Your name", f_msg: "Your goal", f_send: "Send on WhatsApp",
+    langBtn: "العربية", waText: "Hello Omar, my name is {name}. My goal: {msg}"
+  },
+  ar: {
+    nav_about: "من أنا", nav_services: "الخدمات", nav_programs: "البرامج", nav_contact: "تواصل", nav_gym: "الجيم", gym_title: "برنامج الجيم الأسبوعي",
+    hero_title: "جسم قوي.<br>حياة متوازنة.",
+    hero_sub: "تدريب كرة القدم، لياقة بدنية وتوازن في الحياة مع عمر عياري.",
+    hero_cta: "ابدأ معي", hero_cta2: "شاهد البرامج",
+    about_title: "من الملعب إلى الحياة اليومية",
+    about_text: "أنا عمر عياري. ألعب كرة القدم، وأدرّب في أكاديمية لكرة القدم، وأتمرّن في الجيم، وما زلت طالباً. تعلّمت أن القوة لا تدوم إلا عندما تكون حياتك متوازنة، وهذا ما أدرّب عليه.",
+    services_title: "ماذا أدرّب",
+    s1_title: "كرة القدم", s1_text: "التقنية والتمركز وعقلية المباريات للاعبين الصغار والهواة.",
+    s2_title: "القوة", s2_text: "برامج جيم مبنية على مستواك وهدفك.",
+    s3_title: "التوازن", s3_text: "نظّم أسبوعك ليأخذ التدريب والدراسة والعمل والراحة مكانهم.",
+    programs_title: "البرامج",
+    p1_title: "برنامج اللاعب", p1_text: "حصص كرة قدم أسبوعية تركّز على نقاط ضعفك.",
+    p2_title: "برنامج القوة", p2_text: "خطة جيم مع تقدّم أسبوعي واضح.",
+    p3_title: "برنامج التوازن", p3_text: "الرياضة والدراسة والراحة في روتين واحد منظّم.",
+    ask: "اطلب التفاصيل",
+    contact_title: "لنتحدث", contact_text: "أخبرني بهدفك وسأردّ عليك عبر واتساب.",
+    f_name: "اسمك", f_msg: "هدفك", f_send: "أرسل عبر واتساب",
+    langBtn: "English", waText: "مرحباً عمر، اسمي {name}. هدفي: {msg}"
+  }
+};
+
+let current = "en";
+
+function setLang(lang) {
+  current = lang;
+  const t = dict[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.innerHTML = t[el.dataset.i18n];
+  });
+  document.getElementById("langBtn").textContent = t.langBtn;
+  renderGym();
+  try { localStorage.setItem("lang", lang); } catch (e) {}
+}
+
+document.getElementById("langBtn").addEventListener("click", () => {
+  setLang(current === "en" ? "ar" : "en");
+});
+
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const msg = document.getElementById("msg").value.trim();
+  const text = dict[current].waText.replace("{name}", name).replace("{msg}", msg);
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+});
+
+/* ===== GYM PROGRAM ===== */
+const GYM_IMG = "images/exercises/"; // put exercise photos here
+const GYM = [
+  { day: 1, en: "Chest + Triceps", ar: "صدر + ترايسبس", ex: [
+    { img: "bench-press.jpg",       en: "Barbell Bench Press",        ar: "ضغط الصدر بالبار",        sets: "4 × 10" },
+    { img: "incline-db-press.jpg",  en: "Incline Dumbbell Press",     ar: "ضغط دمبل مائل",          sets: "3 × 12" },
+    { img: "chest-fly.jpg",         en: "Chest Fly",                  ar: "فتح الصدر",              sets: "3 × 12" },
+    { img: "triceps-pushdown.jpg",  en: "Triceps Pushdown",           ar: "سحب ترايسبس بالكابل",     sets: "3 × 12" },
+    { img: "overhead-triceps.jpg",  en: "Overhead Triceps Extension", ar: "تمديد ترايسبس فوق الرأس", sets: "3 × 12" }
+  ]},
+  { day: 2, en: "Back + Biceps", ar: "ظهر + بايسبس", ex: [
+    { img: "pull-ups.jpg",          en: "Pull-Ups",                   ar: "العقلة",                 sets: "4 × max" },
+    { img: "barbell-row.jpg",       en: "Barbell Row",                ar: "تجديف بالبار",            sets: "4 × 10" },
+    { img: "lat-pulldown.jpg",      en: "Lat Pulldown",               ar: "سحب أمامي",              sets: "3 × 12" },
+    { img: "barbell-curl.jpg",      en: "Barbell Curl",               ar: "بايسبس بالبار",           sets: "3 × 12" },
+    { img: "hammer-curl.jpg",       en: "Hammer Curl",                ar: "هامر كيرل",              sets: "3 × 12" }
+  ]},
+  { day: 3, en: "Legs", ar: "أرجل", ex: [
+    { img: "squat.jpg",             en: "Squat",                      ar: "سكوات",                  sets: "4 × 10" },
+    { img: "leg-press.jpg",         en: "Leg Press",                  ar: "ضغط الأرجل",             sets: "3 × 12" },
+    { img: "romanian-deadlift.jpg", en: "Romanian Deadlift",          ar: "ديدلفت روماني",           sets: "3 × 10" },
+    { img: "leg-extension.jpg",     en: "Leg Extension",              ar: "تمديد الأرجل",            sets: "3 × 15" },
+    { img: "calf-raise.jpg",        en: "Calf Raise",                 ar: "رفع السمانة",             sets: "4 × 15" }
+  ]},
+  { day: 4, en: "Shoulders + Abs", ar: "أكتاف + بطن", ex: [
+    { img: "overhead-press.jpg",    en: "Overhead Press",             ar: "ضغط الأكتاف",             sets: "4 × 10" },
+    { img: "lateral-raise.jpg",     en: "Lateral Raise",              ar: "رفع جانبي",              sets: "3 × 15" },
+    { img: "rear-delt-fly.jpg",     en: "Rear Delt Fly",              ar: "أكتاف خلفي",             sets: "3 × 15" },
+    { img: "plank.jpg",             en: "Plank",                      ar: "بلانك",                  sets: "3 × 45s" },
+    { img: "crunch.jpg",            en: "Crunch",                     ar: "تمرين البطن",             sets: "3 × 20" }
+  ]},
+  { day: 5, en: "Football Power + Speed", ar: "قوة وسرعة (كرة القدم)", ex: [
+    { img: "box-jump.jpg",          en: "Box Jump",                   ar: "قفز على الصندوق",         sets: "4 × 6" },
+    { img: "kettlebell-swing.jpg",  en: "Kettlebell Swing",           ar: "أرجحة كيتل بيل",          sets: "4 × 15" },
+    { img: "walking-lunges.jpg",    en: "Walking Lunges",             ar: "طعنات بالمشي",            sets: "3 × 12 / leg" },
+    { img: "hip-thrust.jpg",        en: "Hip Thrust",                 ar: "رفع الحوض",              sets: "4 × 10" },
+    { img: "ball-slam.jpg",         en: "Medicine Ball Slam",         ar: "ضرب الكرة الطبية",        sets: "3 × 12" },
+    { img: "sprints.jpg",           en: "Sprints (20 m)",             ar: "جري سريع 20 متر",         sets: "6 × 20 m" }
+  ]},
+  { day: 6, en: "Mobility + Recovery", ar: "مرونة + استشفاء", ex: [
+    { img: "foam-rolling.jpg",      en: "Foam Rolling",               ar: "مساج بالفوم رولر",        sets: "5 min" },
+    { img: "hip-mobility.jpg",      en: "Hip Mobility",               ar: "مرونة الورك",             sets: "3 × 10" },
+    { img: "hamstring-stretch.jpg", en: "Hamstring Stretch",          ar: "إطالة الفخذ الخلفي",      sets: "3 × 30s" },
+    { img: "cat-cow.jpg",           en: "Cat-Cow",                    ar: "القطة والبقرة",           sets: "2 × 10" },
+    { img: "dead-bug.jpg",          en: "Dead Bug",                   ar: "ديد باغ",                sets: "3 × 10" },
+    { img: "easy-jog.jpg",          en: "Easy Jog",                   ar: "جري خفيف",               sets: "20 min" }
+  ]},
+  { day: 7, en: "Rest", ar: "راحة", rest: true, ex: [] }
+];
+
+const gymUI = {
+  en: { day: "Day", restTitle: "Rest day: muscles grow while you recover",
+        tips: ["😴 Sleep 7 to 9 hours", "💧 Drink plenty of water", "🥩 Enough protein and balanced meals", "🚶 Light walk, 20 to 30 minutes"] },
+  ar: { day: "اليوم", restTitle: "يوم راحة: العضلات تكبر وقت الراحة",
+        tips: ["😴 نوم 7 إلى 9 ساعات", "💧 شرب الماء بكثرة", "🥩 بروتين كافي وأكل متوازن", "🚶 مشية خفيفة 20 إلى 30 دقيقة"] }
+};
+
+let gymDay = 0;
+
+function renderGym() {
+  const ar = current === "ar";
+  const ui = gymUI[current];
+  const d = GYM[gymDay];
+
+  document.getElementById("gymTabs").innerHTML = GYM.map((g, i) =>
+    `<button class="gym-tab" type="button" role="tab" data-i="${i}" aria-selected="${i === gymDay}">
+       ${ui.day} ${g.day}<small>${ar ? g.ar : g.en}</small>
+     </button>`).join("");
+
+  document.getElementById("gymGrid").innerHTML = d.rest
+    ? `<div class="gym-rest"><div class="big">🛌</div><h3>${ui.restTitle}</h3>
+         <ul>${ui.tips.map(t => `<li>${t}</li>`).join("")}</ul></div>`
+    : d.ex.map(e =>
+        `<article class="gym-card">
+           <img class="gym-photo" src="${GYM_IMG + e.img}" alt="${e.en}" loading="lazy"
+                onerror="this.outerHTML='<div class=&quot;gym-ph&quot;>🏋️</div>'">
+           <div class="gym-body">
+             <h3 class="gym-name">${ar ? e.ar : e.en}</h3>
+             <span class="gym-sets">${e.sets}</span>
+           </div>
+         </article>`).join("");
+}
+
+document.getElementById("gymTabs").addEventListener("click", e => {
+  const b = e.target.closest(".gym-tab");
+  if (!b) return;
+  gymDay = +b.dataset.i;
+  renderGym();
+});
+
+let saved = "en";
+try { saved = localStorage.getItem("lang") || "en"; } catch (e) {}
+setLang(saved);
+
+</script>
+</body>
+</html>
